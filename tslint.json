@@ -1,0 +1,22 @@
+{
+  "defaultSeverity": "error",
+  "extends": [
+    "tslint:recommended",
+    "tslint-config-airbnb",
+    "tslint-config-prettier"
+  ],
+  "jsRules": {},
+  "rules": {
+    "max-line-length": [
+      true,
+      {
+        "limit": 120,
+        "ignore-pattern": "'.*'"
+      }
+    ],
+    "prefer-array-literal": [true, { "allow-type-parameters": true }],
+    "object-shorthand-properties-first": false,
+    "align": [true, "parameters", "statements"],
+    "no-console": { "severity": "warning" }
+  }
+}

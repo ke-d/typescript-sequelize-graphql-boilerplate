@@ -1,0 +1,65 @@
+{
+  "name": "typescript-sequalize-graphql-boilerplate",
+  "version": "0.1.0",
+  "description": "",
+  "main": "dist/server.js",
+  "engines": {
+    "node": "10.x"
+  },
+  "scripts": {
+    "build-ts": "tsc",
+    "postinstall": "npm run build-ts",
+    "start": "npm run serve",
+    "lint": "tslint 'src/**/*.{ts,tsx}' --exclude 'src/**/*.d.ts'",
+    "test": "npm run lint",
+    "serve": "node dist/server.js",
+    "dev": "concurrently 'npm run watch-ts' 'npm run watch-node'",
+    "watch-node": "nodemon -r dotenv/config dist/server.js",
+    "watch-ts": "tsc -w"
+  },
+  "dependencies": {
+    "apollo-server-express": "^2.3.1",
+    "bcrypt": "^3.0.3",
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "express-json": "^1.0.0",
+    "express-jwt": "^5.3.1",
+    "graphql-type-json": "^0.2.1",
+    "jsonwebtoken": "^8.4.0",
+    "pg": "^7.7.1",
+    "pg-hstore": "^2.3.2",
+    "reflect-metadata": "^0.1.12",
+    "sequelize": "^4.42.0",
+    "sequelize-typescript": "^0.6.6",
+    "type-graphql": "^0.16.0"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^3.0.0",
+    "@types/cors": "^2.8.4",
+    "@types/express": "^4.16.0",
+    "@types/express-jwt": "0.0.41",
+    "@types/graphql-type-json": "^0.1.3",
+    "@types/jsonwebtoken": "^8.3.0",
+    "@types/node": "^10.12.18",
+    "@types/pg": "^7.4.11",
+    "@types/sequelize": "^4.27.33",
+    "concurrently": "^4.1.0",
+    "cpx": "^1.5.0",
+    "dotenv": "^6.2.0",
+    "nodemon": "^1.18.9",
+    "tslint": "^5.12.0",
+    "tslint-config-airbnb": "^5.11.1",
+    "tslint-config-prettier": "^1.17.0",
+    "typescript": "^3.2.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mrdokenny/typescript-sequalize-graphql-boilerplate"
+  },
+  "keywords": [
+    "node",
+    "heroku",
+    "express"
+  ]
+}
