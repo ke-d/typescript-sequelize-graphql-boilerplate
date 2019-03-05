@@ -17,7 +17,7 @@ import { IContext, IUserPayLoad, Role } from '../utils/ContextInterface';
 const expiresIn = '1y';
 
 @Resolver(User)
-export default class RecruiterResolver {
+export default class UserResolver {
   @Authorized([Role.USER])
   @Query((returns) => User)
   public async user(@Ctx() ctx: IContext) {
@@ -89,13 +89,13 @@ export default class RecruiterResolver {
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    const newRecruiter = await User.create({
+    const newUser = await User.create({
       bio,
       email,
       password: hashedPassword,
     });
     const payload: IUserPayLoad = {
-      id: newRecruiter.id,
+      id: newUser.id,
       role: Role.USER,
     };
     const token = jsonwebtoken.sign(payload, process.env.CRYPTO_KEY!, {
