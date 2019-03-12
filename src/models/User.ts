@@ -3,6 +3,7 @@ import {
   CreatedAt,
   DataType,
   Default,
+  HasMany,
   Model,
   PrimaryKey,
   Table,
@@ -10,6 +11,7 @@ import {
   UpdatedAt,
 } from 'sequelize-typescript';
 import { Field, ObjectType } from 'type-graphql';
+import Post from './Post';
 
 @ObjectType()
 @Table
@@ -33,6 +35,10 @@ export default class User extends Model<User> {
   })
   @Column
   public bio?: string;
+
+  @Field(() => [Post])
+  @HasMany(() => Post)
+  public posts!: Post[];
 
   @Field()
   @CreatedAt

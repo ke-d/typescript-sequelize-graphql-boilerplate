@@ -5,10 +5,13 @@ import {
   Args,
   Authorized,
   Ctx,
+  FieldResolver,
   Mutation,
   Query,
   Resolver,
+  Root,
 } from 'type-graphql';
+import Post from '../models/Post';
 import User from '../models/User';
 import AuthInputArgs from '../otherClasses/AuthInputArgs';
 import Token from '../otherClasses/Token';
@@ -42,6 +45,16 @@ export default class UserResolver {
       throw new Error('User not found');
     }
     return user;
+  }
+
+  @FieldResolver()
+  public async posts(@Root() user: User) {
+    const posts = await Post.findAll({
+      where: {
+        userId: user.id,
+      },
+    });
+    return posts;
   }
 
   @Mutation(() => Token)

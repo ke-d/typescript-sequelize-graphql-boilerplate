@@ -7,8 +7,15 @@
 scalar DateTime
 
 type Mutation {
+  createPost(message: String!): Boolean!
   userSignIn(email: String!, password: String!): Token!
   userSignUp(bio: String, email: String!, password: String!): Token!
+}
+
+type Post {
+  message: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
 }
 
 type Query {
@@ -26,6 +33,7 @@ type User {
 
   # The bio of the user.
   bio: String
+  posts: [Post!]!
   createdAt: DateTime!
   updatedAt: DateTime!
 }
